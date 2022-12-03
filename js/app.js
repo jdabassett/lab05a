@@ -64,8 +64,8 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-  let sumABC = a+b+c;
-  let prodABC = a*b*c;
+  let sumABC = sum(sum(a,b)[0],c)[0];
+  let prodABC = multiply(multiply(a,b)[0],c)[0];
   let sumString = `${a} and ${b} and ${c} sum to ${sumABC}.`;
   let prodString = `The product of ${a} and ${b} and ${c} is ${prodABC}.`;
   return [sumABC, prodABC, sumString, prodString];
@@ -78,8 +78,16 @@ testSumAndMultiply(4,7,5);
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
 /////////////////////////////////////
+
+
+
+
 /* Problem 4
-Write a function called sumArray() that takes in an array of numbers as its single argument and then returns an array where the first element is the sum of the numbers in the array, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
+Write a function called sumArray() that takes in an array of numbers as its single argument and then returns an array where the 
+
+first element is the sum of the numbers in the array, and the 
+
+second element is a string that EXACTLY follows this example and uses the values that were input into the function:
 
 "2,3,4 was passed in as an array of numbers, and 9 is their sum."
 
@@ -91,16 +99,27 @@ Test this function by hand in the console to get it working, and when you think 
 let testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
+  let sumSumArr = 0;
+  for (let i = 0; i < sumArr.length; i++){
+    sumSumArr += sum(sumArr[i],0)[0];
+  }
 
+  let sumJoin = sumArr.join(',');
+  let sumString = `${sumJoin} was passed in as an array of numbers, and ${sumSumArr} is their sum.`;
+  return [sumSumArr,sumString];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
 /////////////////////////////////////
+
+
+
+
 /* Problem 5
 Write a function called multiplyArray() that takes an array of numbers as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
 
