@@ -101,7 +101,7 @@ let testArray = [2, 3, 4]; //eslint-disable-line
 function sumArray(sumArr) { //eslint-disable-line
   let sumSumArr = 0;
   for (let i = 0; i < sumArr.length; i++){
-    sumSumArr += sum(sumArr[i],0)[0];
+    sumSumArr = sum(sumSumArr,sumArr[i])[0];
   }
 
   let sumJoin = sumArr.join(',');
@@ -121,7 +121,11 @@ testSumArray(testArray);
 
 
 /* Problem 5
-Write a function called multiplyArray() that takes an array of numbers as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
+Write a function called multiplyArray() that takes an array of numbers as its argument and returns an array whose 
+
+first element is the product of those numbers, and the 
+
+second element is a string that EXACTLY follows this example and uses the values that were input into the function:
 
 "The numbers 2,3,4 have a product of 24."
 
@@ -131,11 +135,18 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
+  let prodMultArr = 1;
+  for (let i = 0; i < multArr.length; i++){
+    prodMultArr = multiply(prodMultArr,multArr[i])[0];
+  }
+  let multArrString = multArr.join(',');
+  let finalString = `The numbers ${multArrString} have a product of ${prodMultArr}.`;
+  return [prodMultArr,finalString];
 
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 
@@ -144,6 +155,11 @@ function multiplyArray(multArr) { //eslint-disable-line
 // Don't forget to create a new branch for your work on the next question, if you attempt it.
 
 /////////////////////////////////////
+
+
+
+
+
 /* STRETCH GOAL: Problem 6
 Write a function called multiplyAnyArray() that takes an array of numbers of any length as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and concatenates a message using the arguments that were passed into the function:
 
